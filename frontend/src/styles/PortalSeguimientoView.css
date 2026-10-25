@@ -1,0 +1,160 @@
+.tracking-page {
+  min-height: 100vh;
+  padding: 40px 16px 56px;
+  background: #0b1120;
+  color: #f8fafc;
+}
+
+.tracking-hero {
+  text-align: center;
+}
+
+.tracking-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tracking-hero h1 {
+  margin: 8px 0;
+  font-size: 1.9rem;
+}
+
+.tracking-hero p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.tracking-card {
+  width: min(420px, 100%);
+  margin: 40px auto 16px;
+  padding: 24px;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  background: #1d293d;
+  text-align: center;
+}
+
+.tracking-icon {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 10px;
+  background: #334155;
+  color: #f5bd08;
+  font-size: 1.4rem;
+}
+
+.tracking-card h2 {
+  margin: 14px 0 6px;
+  font-size: 1.05rem;
+}
+
+.tracking-help {
+  margin: 0 0 20px;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.tracking-form {
+  text-align: left;
+}
+
+.tracking-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+}
+
+.tracking-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #0b1120;
+  color: #94a3b8;
+}
+
+.tracking-input input {
+  width: 100%;
+  min-height: 38px;
+  border: 0;
+  background: transparent;
+  color: #f8fafc;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.tracking-input:focus-within {
+  border-color: #f5bd08;
+}
+
+.tracking-error,
+.tracking-empty {
+  margin: 10px 0 0;
+  font-size: 0.78rem;
+}
+
+.tracking-error {
+  color: #fca5a5;
+}
+
+.tracking-empty {
+  color: #cbd5e1;
+}
+
+.tracking-submit {
+  width: 100%;
+  min-height: 40px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #f5bd08;
+  color: #111827;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tracking-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.tracking-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: min(420px, 100%);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.tracking-steps li {
+  display: grid;
+  gap: 4px;
+  padding: 12px 8px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1a2438;
+  text-align: center;
+}
+
+.tracking-step-number {
+  font-size: 1.2rem;
+}
+
+.tracking-steps strong {
+  font-size: 0.75rem;
+}
+
+.tracking-steps small {
+  color: #94a3b8;
+  font-size: 0.62rem;
+}

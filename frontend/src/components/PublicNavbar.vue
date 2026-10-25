@@ -1,78 +1,138 @@
 <template>
-  <header class="navbar-wrap">
-    <div class="navbar">
-      <a class="brand" href="/">Taller</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <RouterLink class="brand" :to="{ name: 'inicio' }" aria-label="HRL, inicio">
+        <span class="brand-name">HRL</span>
+        <span class="brand-caption">REFACCIONES LAPTOP</span>
+      </RouterLink>
 
-      <nav class="links" aria-label="Navegacion principal">
-        <a href="/" class="link">Inicio</a>
-        <a href="/quienes-somos" class="link">Quienes somos</a>
-        <a href="/seguimiento" class="link">Portal de seguimiento</a>
-        <a href="/blog-portafolio" class="link">Blog y portafolio</a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <RouterLink class="nav-link" :to="{ name: 'inicio' }">Inicio</RouterLink>
+        <RouterLink class="nav-link" :to="{ name: 'quienes-somos' }">Quiénes somos</RouterLink>
+        <RouterLink class="nav-link" :to="{ name: 'blog-portafolio' }">Blog</RouterLink>
+        <RouterLink class="button button-small" :to="{ name: 'seguimiento' }">
+          Ver estatus
+        </RouterLink>
       </nav>
     </div>
   </header>
 </template>
 
 <style scoped>
-.navbar-wrap {
+.site-header {
   position: sticky;
   top: 0;
-  z-index: 20;
-  backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.88);
-  border-bottom: 1px solid #e5e7eb;
+  z-index: 10;
+  background: #f6f6f0;
+  color: #172033;
 }
 
-.navbar {
-  max-width: 1120px;
+.header-inner {
+  width: min(1200px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  min-height: 70px;
+  gap: 18px;
 }
 
 .brand {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  color: #8d1f22;
+  line-height: 1;
   text-decoration: none;
-  letter-spacing: 0.02em;
 }
 
-.links {
+.brand-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+}
+
+.brand-caption {
+  margin-top: 3px;
+  color: #62645f;
+  font-size: 0.38rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.main-nav {
   display: flex;
   align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  gap: 10px;
 }
 
-.link {
+.nav-link {
+  padding: 9px 12px;
+  border-radius: 5px;
+  color: #283247;
+  font-size: 0.82rem;
   text-decoration: none;
-  color: #334155;
-  font-size: 0.95rem;
-  font-weight: 600;
-  padding: 8px 10px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 160ms ease;
 }
 
-.link:hover {
-  background-color: #f1f5f9;
-  color: #0f172a;
+.nav-link:hover,
+.nav-link.router-link-exact-active {
+  background: #e1e5eb;
 }
 
-@media (max-width: 720px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+.button {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  border-radius: 7px;
+  background: #f5bd08;
+  color: #111827;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 160ms ease;
+}
+
+.button:hover {
+  background: #ffd43b;
+}
+
+@media (max-width: 760px) {
+  .header-inner {
+    width: calc(100% - 36px);
   }
 
-  .links {
+  .nav-link {
+    padding: 8px;
+    font-size: 0.73rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .main-nav {
     width: 100%;
-    justify-content: flex-start;
+    justify-content: space-between;
+    gap: 2px;
+  }
+
+  .nav-link {
+    padding: 7px 5px;
+    font-size: 0.68rem;
+  }
+
+  .button {
+    min-height: 31px;
+    padding: 0 8px;
+    font-size: 0.68rem;
   }
 }
 </style>

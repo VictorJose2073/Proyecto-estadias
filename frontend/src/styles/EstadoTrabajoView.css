@@ -1,0 +1,275 @@
+.job-page {
+  min-height: 100vh;
+  padding: 24px 0 48px;
+  background: #0b1120;
+  color: #f8fafc;
+}
+
+.job-width {
+  width: min(1200px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.job-back {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.job-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 20px 0 28px;
+}
+
+.job-eyebrow {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.job-header h1 {
+  margin: 6px 0;
+  font-size: 1.5rem;
+}
+
+.job-reference {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.72rem;
+}
+
+.job-badge {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.job-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 0 0 16px;
+  padding: 14px 16px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1a2438;
+}
+
+.job-summary dt,
+.job-payment dt {
+  color: #94a3b8;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+}
+
+.job-summary dd {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+}
+
+.job-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.job-column {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.job-card {
+  padding: 16px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1a2438;
+}
+
+.job-card h2,
+.job-help h2 {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+}
+
+.job-progress-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-progress-head h2 {
+  margin: 0;
+}
+
+.job-progress-head strong {
+  color: #f5bd08;
+  font-size: 0.8rem;
+}
+
+.job-bar {
+  height: 8px;
+  margin: 12px 0 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #334155;
+}
+
+.job-bar span {
+  display: block;
+  height: 100%;
+  background: #f8fafc;
+}
+
+.job-progress-foot {
+  display: flex;
+  justify-content: space-between;
+  color: #94a3b8;
+  font-size: 0.65rem;
+}
+
+.job-ready {
+  color: #22c55e;
+}
+
+.job-history {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.job-history li {
+  display: flex;
+  gap: 12px;
+}
+
+.job-history small {
+  color: #94a3b8;
+  font-size: 0.62rem;
+}
+
+.job-history p {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+}
+
+.job-check {
+  display: grid;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.65rem;
+}
+
+.job-notes {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  background: #0b1120;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.job-warranties {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.job-warranties li {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #334155;
+  font-size: 0.75rem;
+}
+
+.job-warranties small {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.62rem;
+}
+
+.job-expires {
+  text-align: right;
+}
+
+.job-payment {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+.job-payment div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-payment dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.job-payment .job-paid {
+  color: #22c55e;
+}
+
+.job-help {
+  text-align: center;
+}
+
+.job-help p {
+  margin: 0 0 12px;
+  color: #94a3b8;
+  font-size: 0.72rem;
+}
+
+.job-whatsapp {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.job-state {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.job-state-error {
+  color: #fca5a5;
+}
+
+@media (min-width: 900px) {
+  .job-summary {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .job-grid {
+    grid-template-columns: 1fr 340px;
+  }
+}

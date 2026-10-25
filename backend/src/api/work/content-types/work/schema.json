@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "works",
+  "info": {
+    "singularName": "work",
+    "pluralName": "works",
+    "displayName": "Trabajo"
+  },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "title" },
+    "workDate": { "type": "date", "required": true },
+    "device": { "type": "string" },
+    "technician": { "type": "string" },
+    "summary": { "type": "text", "required": true },
+    "details": { "type": "richtext" },
+    "photos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "works"
+    }
+  }
+}

@@ -1,24 +1,34 @@
-# vue-template
+# HRL Refacciones Laptop
 
-## Project setup
-```
-npm install
+Frontend de la plataforma web pública de HRL, construido con Vue 3, Vite,
+Vue Router y Pinia.
+
+## Requisitos
+
+- Node.js compatible con Vite 8.
+- npm.
+
+## Instalación
+
+```sh
+npm ci
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+## Desarrollo local
+
+```sh
+npm run dev
 ```
 
-### Compiles and minifies for production
-```
+## Validaciones
+
+```sh
+npm run lint
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+Para previsualizar localmente la compilación de producción:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```sh
+npm run preview
+```
