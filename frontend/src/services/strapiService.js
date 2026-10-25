@@ -20,7 +20,9 @@ export async function fetchCategories() {
 }
 
 export async function fetchWorks() {
-  const works = await request('/works?populate[0]=category&populate[1]=photos&sort=workDate:desc')
+  const works = await request(
+    '/works?filters[consentimientoCliente][$eq]=true&populate[0]=category&populate[1]=photos&sort=workDate:desc'
+  )
   return works.map((work) => ({
     id: work.documentId,
     title: work.title,

@@ -15,6 +15,7 @@
     "technician": { "type": "string" },
     "summary": { "type": "text", "required": true },
     "details": { "type": "richtext" },
+    "consentimientoCliente": { "type": "boolean", "required": true, "default": false },
     "photos": {
       "type": "media",
       "multiple": true,
