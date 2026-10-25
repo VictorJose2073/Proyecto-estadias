@@ -4,7 +4,7 @@
   "info": {
     "singularName": "work",
     "pluralName": "works",
-    "displayName": "Trabajo"
+    "displayName": "Blog - Trabajo"
   },
   "options": { "draftAndPublish": true },
   "attributes": {
