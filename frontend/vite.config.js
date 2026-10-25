@@ -8,5 +8,10 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  // Puerto fijo: el CORS de Strapi solo permite este origen
+  server: {
+    port: 5173,
+    strictPort: true
   }
 })
