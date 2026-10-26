@@ -1,0 +1,37 @@
+/* Paleta oscura. Mismas variables y mismo orden que global.css; se activa con data-theme="dark" en <html> */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Barra superior y paneles destacados */
+  --color-featured: #17384a;
+  --color-on-featured: #fff;
+  --color-on-featured-muted: #dcebf7;
+  /* Botones y acciones principales */
+  --color-accent: #1b72ad;
+  --color-accent-hover: #155c8c;
+  /* Enlaces y cifras resaltadas en texto */
+  --color-link: #7cc0ee;
+  /* Selecciones y avisos informativos */
+  --color-info-bg: #16344a;
+  --color-info-text: #b9dcf5;
+  /* Texto */
+  --color-text: #e7ecf0;
+  --color-muted: #a9b8c3;
+  /* Fondos */
+  --color-page: #0e171d;
+  --color-panel: #142129;
+  --color-surface: #1a2a34;
+  /* Separadores y bordes de controles */
+  --color-border: #2b3d49;
+  --color-control-border: #6b7f8c;
+
+  /* Estados. Los colores principales se mantienen para bordes e indicadores */
+  --color-warning: #d99a1e;
+  --color-warning-bg: #3a2e12;
+  --color-success: #1b9c8e;
+  --color-success-bg: #12332f;
+  --color-neutral: #7b8a96;
+  --color-neutral-bg: #26323a;
+  --color-error: #f2a59d;
+  --color-error-bg: #3a1a17;
+}

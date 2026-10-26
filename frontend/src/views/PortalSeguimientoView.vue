@@ -1,20 +1,18 @@
 <template>
   <div class="tracking-page">
     <header class="tracking-hero">
-      <span class="tracking-eyebrow">Seguimiento</span>
-      <h1>Buscar por Referencia</h1>
-      <p>Ingresa tu número de referencia para ver el estado y progreso de tu equipo.</p>
+      <h1>Consulta una referencia</h1>
+      <p>Ingresa el número de referencia para consultar la información registrada de tu equipo.</p>
     </header>
 
     <section class="tracking-card">
-      <div class="tracking-icon" aria-hidden="true">⌕</div>
-      <h2>Consultar Estado del Trabajo</h2>
+      <h2>Consultar estado del trabajo</h2>
       <p class="tracking-help">
-        El número de referencia fue enviado a tu WhatsApp o correo electrónico al momento de dejar tu equipo.
+        Encontrarás el número de referencia en la constancia de recepción de tu equipo.
       </p>
 
       <form class="tracking-form" @submit.prevent="searchReference">
-        <label for="reference">Número de Referencia</label>
+        <label for="reference">Número de referencia</label>
         <div class="tracking-input">
           <span aria-hidden="true">#</span>
           <input
@@ -22,25 +20,16 @@
             v-model="reference"
             name="reference"
             type="text"
-            placeholder="Ej: REF-2024-001"
+            placeholder="Ej: DEMO-001"
             autocomplete="off"
           />
         </div>
         <p v-if="errorMessage" class="tracking-error" role="alert">{{ errorMessage }}</p>
-        <button type="submit" class="tracking-submit" :disabled="isLoading">
-          {{ isLoading ? 'Consultando...' : 'Consultar Estado' }}
+        <button type="submit" class="tracking-submit">
+          Consultar estado
         </button>
       </form>
-
     </section>
-
-    <ul class="tracking-steps">
-      <li v-for="step in steps" :key="step.number">
-        <span class="tracking-step-number">{{ step.number }}</span>
-        <strong>{{ step.title }}</strong>
-        <small>{{ step.text }}</small>
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -51,14 +40,7 @@ import '@/styles/PortalSeguimientoView.css'
 
 const router = useRouter()
 const reference = ref('')
-const isLoading = ref(false)
 const errorMessage = ref('')
-
-const steps = [
-  { number: '01', title: 'Registro', text: 'Número asignado al dejar tu equipo' },
-  { number: '02', title: 'Seguimiento', text: 'Progreso actualizado en tiempo real' },
-  { number: '03', title: 'Garantía', text: 'Historial y garantías incluidas' }
-]
 
 // La consulta real ocurre en la vista de estado, no aquí
 function searchReference() {

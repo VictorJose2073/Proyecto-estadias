@@ -1,8 +1,8 @@
 .job-page {
-  min-height: 100vh;
-  padding: 24px 0 48px;
-  background: #0b1120;
-  color: #f8fafc;
+  min-height: calc(100vh - 70px);
+  padding: 28px 0 52px;
+  background: var(--color-page);
+  color: var(--color-text);
 }
 
 .job-width {
@@ -11,9 +11,25 @@
 }
 
 .job-back {
-  color: #94a3b8;
-  font-size: 0.75rem;
+  color: var(--color-link);
+  font-size: 0.9rem;
+  font-weight: 600;
   text-decoration: none;
+}
+
+.job-back:hover {
+  text-decoration: underline;
+}
+
+.job-demo-note {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--color-warning);
+  border-radius: 6px;
+  background: var(--color-warning-bg);
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .job-header {
@@ -22,33 +38,27 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  margin: 20px 0 28px;
-}
-
-.job-eyebrow {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  margin: 20px 0;
 }
 
 .job-header h1 {
-  margin: 6px 0;
-  font-size: 1.5rem;
+  margin: 0 0 6px;
+  font-size: 1.7rem;
 }
 
 .job-reference {
   margin: 0;
-  color: #94a3b8;
-  font-size: 0.72rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
 }
 
 .job-badge {
-  padding: 5px 12px;
+  padding: 6px 12px;
   border-radius: 999px;
-  background: #dcfce7;
-  color: #15803d;
-  font-size: 0.72rem;
+  border: 1px solid var(--color-success);
+  background: var(--color-success-bg);
+  color: var(--color-text);
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -57,22 +67,22 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
   margin: 0 0 16px;
-  padding: 14px 16px;
-  border: 1px solid #334155;
+  padding: 18px;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: #1a2438;
+  background: var(--color-surface);
 }
 
 .job-summary dt,
 .job-payment dt {
-  color: #94a3b8;
-  font-size: 0.62rem;
-  text-transform: uppercase;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .job-summary dd {
   margin: 4px 0 0;
-  font-size: 0.78rem;
+  font-size: 0.95rem;
 }
 
 .job-grid {
@@ -86,17 +96,18 @@
   gap: 16px;
 }
 
-.job-card {
-  padding: 16px;
-  border: 1px solid #334155;
+.job-card,
+.job-help {
+  padding: 18px;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: #1a2438;
+  background: var(--color-surface);
 }
 
 .job-card h2,
 .job-help h2 {
   margin: 0 0 14px;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 .job-progress-head {
@@ -109,38 +120,40 @@
 }
 
 .job-progress-head strong {
-  color: #f5bd08;
-  font-size: 0.8rem;
+  color: var(--color-link);
+  font-size: 0.95rem;
 }
 
 .job-bar {
-  height: 8px;
-  margin: 12px 0 8px;
+  height: 9px;
+  margin: 14px 0 9px;
   overflow: hidden;
   border-radius: 999px;
-  background: #334155;
+  background: var(--color-neutral-bg);
 }
 
 .job-bar span {
   display: block;
   height: 100%;
-  background: #f8fafc;
+  background: var(--color-accent);
 }
 
 .job-progress-foot {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  color: #94a3b8;
-  font-size: 0.65rem;
+  gap: 8px;
+  color: var(--color-muted);
+  font-size: 0.85rem;
 }
 
 .job-ready {
-  color: #22c55e;
+  color: var(--color-text);
 }
 
 .job-history {
   display: grid;
-  gap: 14px;
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -152,35 +165,35 @@
 }
 
 .job-history small {
-  color: #94a3b8;
-  font-size: 0.62rem;
+  color: var(--color-muted);
+  font-size: 0.85rem;
 }
 
 .job-history p {
-  margin: 2px 0 0;
-  font-size: 0.78rem;
+  margin: 3px 0 0;
+  font-size: 0.95rem;
 }
 
 .job-check {
   display: grid;
   flex: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   place-items: center;
   border-radius: 50%;
-  background: #22c55e;
-  color: #fff;
-  font-size: 0.65rem;
+  background: var(--color-success-bg);
+  color: var(--color-text);
+  font-size: 0.85rem;
 }
 
 .job-notes {
   margin: 0;
-  padding: 12px;
-  border: 1px solid #334155;
+  padding: 14px;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
-  background: #0b1120;
-  font-size: 0.75rem;
-  line-height: 1.5;
+  background: var(--color-panel);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .job-warranties {
@@ -194,15 +207,17 @@
 .job-warranties li {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #334155;
-  font-size: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
 }
 
 .job-warranties small {
   display: block;
-  color: #94a3b8;
-  font-size: 0.62rem;
+  margin-bottom: 3px;
+  color: var(--color-muted);
+  font-size: 0.85rem;
 }
 
 .job-expires {
@@ -213,12 +228,13 @@
   display: grid;
   gap: 10px;
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .job-payment div {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .job-payment dd {
@@ -227,41 +243,28 @@
 }
 
 .job-payment .job-paid {
-  color: #22c55e;
-}
-
-.job-help {
-  text-align: center;
+  color: var(--color-text);
 }
 
 .job-help p {
-  margin: 0 0 12px;
-  color: #94a3b8;
-  font-size: 0.72rem;
-}
-
-.job-whatsapp {
-  display: inline-block;
-  padding: 10px 16px;
-  border-radius: 6px;
-  background: #22c55e;
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-decoration: none;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .job-state {
   margin-top: 24px;
   padding: 24px;
-  border: 1px solid #334155;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
+  background: var(--color-surface);
   text-align: center;
-  color: #cbd5e1;
+  color: var(--color-muted);
 }
 
 .job-state-error {
-  color: #fca5a5;
+  color: var(--color-error);
 }
 
 @media (min-width: 900px) {

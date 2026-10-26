@@ -2,6 +2,9 @@
 
 const PUBLIC_READ = ['api::work.work', 'api::article.article', 'api::category.category'];
 
+// El sitio no tiene cuentas de usuario; Strapi deja el registro público abierto por defecto
+const PUBLIC_DENIED = ['plugin::users-permissions.auth.register'];
+
 module.exports = {
   register() {},
 
@@ -25,5 +28,9 @@ module.exports = {
         }
       }
     }
+
+    await strapi.db
+      .query('plugin::users-permissions.permission')
+      .deleteMany({ where: { action: { $in: PUBLIC_DENIED }, role: role.id } });
   },
 };

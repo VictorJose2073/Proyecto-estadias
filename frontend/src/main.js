@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import "./styles/global.css";
+import "./styles/theme-dark.css";
 import router from './router'
 
 createApp(App).use(createPinia()).use(router).mount('#app')

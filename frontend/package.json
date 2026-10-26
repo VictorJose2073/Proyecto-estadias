@@ -1,5 +1,5 @@
 {
-  "name": "vue-template",
+  "name": "hrl-frontend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,6 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "core-js": "^3.8.3",
     "pinia": "^4.1.0",
     "vue": "^3.2.13",
     "vue-router": "^5.4.0"
@@ -35,11 +34,5 @@
       "sourceType": "module"
     },
     "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+  }
 }

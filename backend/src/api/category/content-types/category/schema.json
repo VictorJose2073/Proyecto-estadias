@@ -14,7 +14,8 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::work.work",
-      "mappedBy": "category"
+      "mappedBy": "category",
+      "private": true
     }
   }
 }

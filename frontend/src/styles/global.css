@@ -1,7 +1,43 @@
+/* Paleta clara. La oscura está en theme-dark.css con las mismas variables y en el mismo orden */
 :root {
+  color-scheme: light;
+
+  /* Barra superior y paneles destacados */
+  --color-featured: #17384a;
+  --color-on-featured: #fff;
+  --color-on-featured-muted: #dcebf7;
+  /* Botones y acciones principales */
+  --color-accent: #1b72ad;
+  --color-accent-hover: #155c8c;
+  /* Enlaces y cifras resaltadas en texto */
+  --color-link: #155c8c;
+  /* Selecciones y avisos informativos */
+  --color-info-bg: #dcebf7;
+  --color-info-text: #0f4c78;
+  /* Texto */
+  --color-text: #12222d;
+  --color-muted: #435664;
+  /* Fondos */
+  --color-page: #e7ecf0;
+  --color-panel: #f3f6f8;
+  --color-surface: #fff;
+  /* Separadores y bordes de controles */
+  --color-border: #d5dde4;
+  --color-control-border: #81939f;
+
+  /* Estados. Pendiente, listo y neutral no alcanzan 4.5:1 como texto: solo para bordes e indicadores */
+  --color-warning: #d99a1e;
+  --color-warning-bg: #fcefd0;
+  --color-success: #1b9c8e;
+  --color-success-bg: #d6efe8;
+  --color-neutral: #7b8a96;
+  --color-neutral-bg: #e3e8ec;
+  --color-error: #85251e;
+  --color-error-bg: #fff2f0;
+
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #f8fafc;
-  background: #0b1120;
+  color: var(--color-text);
+  background: var(--color-page);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -16,7 +52,7 @@
 body {
   min-width: 320px;
   margin: 0;
-  background: #0b1120;
+  background: var(--color-page);
 }
 
 a {

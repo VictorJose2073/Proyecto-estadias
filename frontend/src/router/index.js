@@ -25,6 +25,11 @@ const routes = [
     path: '/blog-portafolio',
     name: 'blog-portafolio',
     component: () => import('@/views/BlogPortafolioView.vue')
+  },
+  // Cualquier ruta desconocida regresa al inicio
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: { name: 'inicio' }
   }
 ]
 

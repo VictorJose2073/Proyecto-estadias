@@ -1,1 +1,74 @@
-/* Estilos de QuienesSomosView */
+.about-page {
+  min-height: calc(100vh - 70px);
+  padding-bottom: 56px;
+  background: var(--color-page);
+  color: var(--color-text);
+}
+
+.about-hero {
+  padding: 48px 24px;
+  background: var(--color-featured);
+  color: var(--color-on-featured);
+  text-align: center;
+}
+
+.about-hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+.about-hero p {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--color-on-featured-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(900px, calc(100% - 32px));
+  margin: 36px auto 0;
+}
+
+.about-content article,
+.about-reminder {
+  margin: 0;
+  padding: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+}
+
+.about-content h2 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+.about-content article p,
+.about-reminder {
+  color: var(--color-muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.about-content article p {
+  margin: 0;
+}
+
+.about-reminder {
+  grid-column: 1 / -1;
+  border-left: 4px solid var(--color-accent);
+}
+
+@media (max-width: 620px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-reminder {
+    grid-column: auto;
+  }
+}

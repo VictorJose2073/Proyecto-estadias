@@ -3,18 +3,16 @@
     <div class="job-width">
       <RouterLink class="job-back" :to="{ name: 'seguimiento' }">← Nueva búsqueda</RouterLink>
 
-      <p v-if="isLoading" class="job-state">Cargando estado del trabajo...</p>
-      <p v-else-if="hasError" class="job-state job-state-error">
-        No se pudo consultar el trabajo. Intenta de nuevo más tarde.
-      </p>
-      <p v-else-if="!job" class="job-state">
+      <p v-if="!job" class="job-state">
         No encontramos resultados para la referencia {{ reference }}.
       </p>
 
-      <template v-else>
+      <template v-if="job">
+        <p class="job-demo-note">
+          Demostración: estos datos son de ejemplo y no corresponden a una orden real ni se actualizan en tiempo real.
+        </p>
         <header class="job-header">
           <div>
-            <span class="job-eyebrow">Estado del trabajo</span>
             <h1>{{ job.device }}</h1>
             <p class="job-reference">Referencia: <code>{{ job.reference }}</code></p>
           </div>
@@ -32,7 +30,7 @@
           <div class="job-column">
             <section class="job-card">
               <div class="job-progress-head">
-                <h2>Progreso General</h2>
+                <h2>Progreso general</h2>
                 <strong>{{ job.progress }}%</strong>
               </div>
               <div class="job-bar"><span :style="{ width: job.progress + '%' }"></span></div>
@@ -43,7 +41,7 @@
             </section>
 
             <section class="job-card">
-              <h2>Historial de Actividad</h2>
+              <h2>Historial de actividad</h2>
               <p v-if="job.history.length === 0" class="job-state">Aún no hay actividad.</p>
               <ol v-else class="job-history">
                 <li v-for="entry in job.history" :key="entry.date + entry.text">
@@ -57,7 +55,7 @@
             </section>
 
             <section class="job-card">
-              <h2>Notas del Técnico</h2>
+              <h2>Notas del técnico</h2>
               <p class="job-notes">{{ job.notes }}</p>
             </section>
           </div>
@@ -80,20 +78,18 @@
             </section>
 
             <section class="job-card">
-              <h2>Resumen de Pago</h2>
+              <h2>Resumen de pago</h2>
+              <p class="job-demo-note">Importes ilustrativos. Moneda por confirmar.</p>
               <dl class="job-payment">
-                <div><dt>Total del trabajo</dt><dd>{{ money(job.total) }}</dd></div>
-                <div><dt>Monto pagado</dt><dd class="job-paid">{{ money(job.paid) }}</dd></div>
-                <div><dt>Balance pendiente</dt><dd>{{ money(job.total - job.paid) }}</dd></div>
+                <div><dt>Total del trabajo</dt><dd>{{ amount(job.total) }}</dd></div>
+                <div><dt>Monto pagado</dt><dd class="job-paid">{{ amount(job.paid) }}</dd></div>
+                <div><dt>Balance pendiente</dt><dd>{{ amount(job.total - job.paid) }}</dd></div>
               </dl>
             </section>
 
             <section class="job-help">
               <h2>¿Tienes preguntas?</h2>
-              <p>Contáctanos por WhatsApp</p>
-              <a class="job-whatsapp" href="https://wa.me/18095551234" target="_blank" rel="noreferrer">
-                Chatear por WhatsApp
-              </a>
+              <p>Canal de contacto: [DATO REAL: teléfono o correo oficial]</p>
             </section>
           </aside>
         </div>
@@ -103,45 +99,36 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import '@/styles/EstadoTrabajoView.css'
 
 const route = useRoute()
 const reference = computed(() => String(route.params.reference || ''))
-const isLoading = ref(false)
-const hasError = ref(false)
-
-// Datos de ejemplo; luego vendrán de Firestore a través de src/services/
+// Datos de demostración; deben reemplazarse por registros reales de Strapi.
 const mockJobs = {
-  'REF-2024-001': {
-    reference: 'REF-2024-001',
-    device: 'Laptop HP Pavilion 15 — S/N: HP8X2901',
+  'DEMO-001': {
+    reference: 'DEMO-001',
+    device: 'Laptop de demostración',
     status: 'Completado',
-    client: 'Carlos Mendoza',
-    technician: 'Luis Rodríguez',
-    entryDate: '12/09/26 — 11:20 AM',
+    client: 'Cliente de demostración',
+    technician: 'Técnico de demostración',
+    entryDate: '12/09/2026, 11:20 AM',
     total: 85,
     paid: 85,
     progress: 100,
     stepsDone: 7,
     stepsTotal: 7,
     history: [
-      { date: '12/09/26 — 11:20 AM', text: 'Orden recibida (Mantenimiento y reparación de bisagras)' },
-      { date: '12/09/26 — 11:40 AM', text: 'Diagnóstico completado — bisagra izquierda dañada' },
-      { date: '12/09/26 — 01:10 PM', text: 'Reparando bisagras — desmontaje del chasis' },
-      { date: '12/09/26 — 03:12 PM', text: 'Bisagras reparadas y ajustadas correctamente' },
-      { date: '12/09/26 — 03:20 PM', text: 'Preparando equipo para mantenimiento preventivo' },
-      { date: '12/09/26 — 03:50 PM', text: 'Mantenimiento finalizado — limpieza interna y pasta térmica' },
-      { date: '12/09/26 — 03:50 PM', text: 'Trabajo concluido — esperando retiro del cliente' }
+      { date: '12/09/2026, 11:20 AM', text: 'Orden de demostración recibida' },
+      { date: '12/09/2026, 11:40 AM', text: 'Diagnóstico de demostración completado' },
+      { date: '12/09/2026, 01:10 PM', text: 'Revisión de demostración en proceso' },
+      { date: '12/09/2026, 03:12 PM', text: 'Trabajo de demostración completado' }
     ],
     warranties: [
-      { name: 'Reparación de bisagras', expires: '12/03/27' },
-      { name: 'Pasta térmica aplicada', expires: '12/09/27' },
-      { name: 'Limpieza interna', expires: '12/03/27' }
+      { name: 'Garantía de demostración', expires: '12/03/2027' }
     ],
-    notes:
-      'Equipo entregado con bisagras nuevas. Se recomienda no forzar la pantalla más allá de 135°. Limpieza de ventiladores y cambio de pasta térmica realizado. Temperatura mejoró de 94°C a 71°C en carga.'
+    notes: 'Este texto es de ejemplo. Sustitúyelo por notas verificadas antes de usar datos reales.'
   }
 }
 
@@ -155,13 +142,13 @@ const summary = computed(() =>
         { label: 'Fecha de ingreso', value: job.value.entryDate },
         {
           label: 'Costo total',
-          value: `${money(job.value.total)} (Pagado: ${money(job.value.paid)})`
+          value: `${amount(job.value.total)} (pagado: ${amount(job.value.paid)})`
         }
       ]
     : []
 )
 
-function money(amount) {
-  return `$${amount.toFixed(2)}`
+function amount(value) {
+  return value.toFixed(2)
 }
 </script>

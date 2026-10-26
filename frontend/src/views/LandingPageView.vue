@@ -2,167 +2,102 @@
   <div class="landing-page">
     <main>
       <section id="inicio" class="hero">
-        <div class="hero-shade"></div>
         <div class="hero-content page-width">
-          <span class="eyebrow">Servicio técnico certificado</span>
-          <h1>Reparación de<br />Laptops &amp; Equipos</h1>
+          <h1>Reparación de laptops y equipos</h1>
           <p>
-            Especialistas en mantenimiento, reparación de bisagras, reemplazo
-            de baterías y más. Más de 5 años devolviendo la vida a tus equipos
-            con garantía escrita.
+            Mantenimiento y reparación de bisagras, pantallas, baterías y otros
+            componentes. Consulta el estado de una orden con tu número de referencia.
           </p>
           <div class="hero-actions">
             <RouterLink class="button" :to="{ name: 'seguimiento' }">
-              Buscar mi Referencia
+              Consultar una orden
             </RouterLink>
-            <a
-              class="button button-whatsapp"
-              href="https://wa.me/18095551234"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span aria-hidden="true">◉</span> WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="stats" aria-label="Experiencia del taller">
-        <div class="stats-inner page-width">
-          <div class="stat">
-            <strong>500+</strong>
-            <span>Equipos Reparados</span>
-          </div>
-          <div class="stat">
-            <strong>5 años</strong>
-            <span>De Experiencia</span>
-          </div>
-          <div class="stat">
-            <strong>98%</strong>
-            <span>Satisfacción</span>
-          </div>
-          <div class="stat">
-            <strong>24h</strong>
-            <span>Tiempo Promedio</span>
           </div>
         </div>
       </section>
 
       <section id="sobre-nosotros" class="about-section page-width">
         <div class="about-copy">
-          <span class="section-kicker">Sobre nosotros</span>
-          <h2>Tu equipo en las mejores manos</h2>
+          <h2>Un proceso claro para cada reparación</h2>
           <p>
-            Somos un centro de servicio técnico especializado en laptops y
-            equipos de cómputo. Contamos con técnicos certificados y
-            herramientas profesionales para ofrecer diagnósticos precisos y
-            reparaciones de alta calidad.
+            Revisamos el equipo, explicamos el diagnóstico y compartimos el
+            trabajo realizado al entregar la orden. Las condiciones y el alcance
+            de cada servicio se confirman antes de comenzar.
           </p>
           <p>
-            Cada trabajo tiene seguimiento en tiempo real. Introduce tu número
-            de referencia en nuestro sistema y monitorea el progreso de tu
-            equipo sin necesidad de llamar.
+            El portal muestra la información registrada para cada referencia.
+            La disponibilidad y vigencia de esos datos dependen de la actualización
+            del sistema.
           </p>
-          <div class="trust-list">
-            <span><i aria-hidden="true">✓</i> Garantía por escrito</span>
-            <span><i aria-hidden="true">✓</i> Presupuesto sin compromiso</span>
-          </div>
         </div>
-        <div class="about-photo">
-          <img
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1100&q=85"
-            alt="Técnica trabajando cuidadosamente en un equipo electrónico"
-            loading="lazy"
-          />
-          <div class="photo-badge">
-            <span class="badge-check" aria-hidden="true">✓</span>
-            <span><strong>Trabajo garantizado</strong><small>Calidad en cada reparación</small></span>
-          </div>
+        <div class="about-note" aria-label="Información del proceso">
+          <strong>Antes de autorizar</strong>
+          <p>Solicita el diagnóstico, el costo y las condiciones de garantía de tu reparación.</p>
         </div>
       </section>
 
       <section id="servicios" class="services-section page-width">
         <div class="section-heading">
-          <span class="section-kicker">Servicios</span>
-          <h2>¿Qué reparamos?</h2>
-          <p>Especialistas en todo tipo de fallas de hardware. Desde bisagras hasta pantallas, baterías y más.</p>
+          <h2>Servicios de reparación</h2>
+          <p>El diagnóstico permite confirmar si el servicio es adecuado para tu equipo.</p>
         </div>
 
         <div class="services-grid">
           <article class="service-card">
-            <span class="service-icon" aria-hidden="true">⌘</span>
-            <h3>Reparación de Bisagras</h3>
-            <p>Reparamos y reemplazamos bisagras dañadas en laptops de cualquier marca. Restauramos el movimiento correcto de la pantalla.</p>
-            <strong>Desde $35</strong>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7.5 18H21M6.4 16.4 9.8 4" /><circle cx="6" cy="18" r="1.8" /><path d="M12.5 9.5a8 8 0 0 1 2.2 4.5" /></svg>
+            </span>
+            <h3>Reparación de bisagras</h3>
+            <p>Revisión y reparación de bisagras dañadas en laptops.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon" aria-hidden="true">ϟ</span>
-            <h3>Reemplazo de Batería</h3>
-            <p>Sustituimos baterías desgastadas por unidades de alta calidad. Restauramos la autonomía original de tu equipo.</p>
-            <strong>Desde $45</strong>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="17" height="10" rx="2" /><path d="M22 11v2M6 10v4M10 10v4" /></svg>
+            </span>
+            <h3>Reemplazo de batería</h3>
+            <p>Evaluación de batería y sustitución según el modelo del equipo.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon" aria-hidden="true">▱</span>
-            <h3>Reparación de Pantalla</h3>
-            <p>Cambio de pantallas rotas, píxeles o con retroiluminación fallida. Usamos repuestos originales o compatibles certificados.</p>
-            <strong>Desde $80</strong>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M8 20h8M12 16v4" /></svg>
+            </span>
+            <h3>Reparación de pantalla</h3>
+            <p>Evaluación de daños en pantalla y opciones de reemplazo disponibles.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon" aria-hidden="true">♨</span>
-            <h3>Mantenimiento Preventivo</h3>
-            <p>Limpieza interna, cambio de pasta térmica, eliminación de polvo y optimización del sistema de enfriamiento.</p>
-            <strong>Desde $25</strong>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="1.8" /><path d="M12 10.2c0-3 1.5-4.7 4-4.2" /><path d="M12 10.2c0-3 1.5-4.7 4-4.2" transform="rotate(120 12 12)" /><path d="M12 10.2c0-3 1.5-4.7 4-4.2" transform="rotate(240 12 12)" /></svg>
+            </span>
+            <h3>Mantenimiento preventivo</h3>
+            <p>Limpieza interna y revisión del sistema de enfriamiento.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon" aria-hidden="true">▤</span>
-            <h3>Reparación de Teclado</h3>
-            <p>Reemplazamos teclas individuales o el teclado completo. También reparamos conectores y cables flexibles.</p>
-            <strong>Desde $30</strong>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" /><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10" /></svg>
+            </span>
+            <h3>Reparación de teclado</h3>
+            <p>Revisión de teclas, teclado y conexiones relacionadas.</p>
           </article>
           <article class="service-card">
-            <span class="service-icon" aria-hidden="true">⚙</span>
-            <h3>Diagnóstico Técnico</h3>
-            <p>Evaluación completa del estado de tu equipo. Identificamos fallas de hardware y software con informe detallado.</p>
-            <strong>Desde $15</strong>
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" /><path d="M20 20l-4.5-4.5" /></svg>
+            </span>
+            <h3>Diagnóstico técnico</h3>
+            <p>Evaluación inicial para identificar posibles fallas de hardware o software.</p>
           </article>
         </div>
       </section>
 
       <section id="contacto" class="contact-section page-width">
         <div class="section-heading">
-          <span class="section-kicker">Contacto</span>
-          <h2>Visítanos o escríbenos</h2>
+          <h2>Información de contacto</h2>
+          <p>Completa estos datos con los canales oficiales del taller antes de publicar el sitio.</p>
         </div>
-        <div class="contact-layout">
-          <div class="city-photo">
-            <img
-              src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85"
-              alt="Vista urbana de la ciudad al atardecer"
-              loading="lazy"
-            />
-            <div class="city-caption">
-              <strong>HRL Hector Refacciones Laptop</strong>
-              <span>C/ Principal #45, Local 3 — Santiago</span>
-            </div>
-          </div>
-          <div class="contact-list">
-            <a class="contact-card" href="https://maps.google.com/?q=Calle+Principal+45+Santiago+Republica+Dominicana" target="_blank" rel="noreferrer">
-              <span class="contact-icon" aria-hidden="true">⌖</span>
-              <span><small>Dirección</small><strong>C/ Principal #45, Local 3, Santiago, RD</strong><small>Frente al Banco Popular — Piso 1</small></span>
-            </a>
-            <a class="contact-card" href="tel:+18095551234">
-              <span class="contact-icon" aria-hidden="true">⌕</span>
-              <span><small>Teléfono</small><strong>(809) 555-1234</strong><small>Lun–Vie 8:00 AM – 8:00 PM</small></span>
-            </a>
-            <a class="contact-card" href="mailto:contacto@hrlreparaciones.com">
-              <span class="contact-icon" aria-hidden="true">✉</span>
-              <span><small>Email</small><strong>Correo de contacto</strong><small>Respuesta en menos de 2 horas</small></span>
-            </a>
-            <a class="contact-card" href="https://wa.me/18095551234" target="_blank" rel="noreferrer">
-              <span class="contact-icon whatsapp-icon" aria-hidden="true">◉</span>
-              <span><small>WhatsApp</small><strong>+1 (809) 555-1234</strong><small>Atención rápida por chat</small></span>
-            </a>
-          </div>
+        <div class="contact-list">
+          <div class="contact-card"><strong>Dirección</strong><span>[DATO REAL: dirección del taller]</span></div>
+          <div class="contact-card"><strong>Teléfono / WhatsApp</strong><span>[DATO REAL: número oficial]</span></div>
+          <div class="contact-card"><strong>Correo</strong><span>[DATO REAL: correo oficial]</span></div>
+          <div class="contact-card"><strong>Horario</strong><span>[DATO REAL: horario de atención]</span></div>
         </div>
       </section>
 
@@ -170,17 +105,17 @@
         <div class="tracking-inner page-width">
           <div>
             <h2>¿Ya tienes un número de referencia?</h2>
-            <p>Consulta el estado de tu equipo en tiempo real.</p>
+            <p>Consulta la información registrada para tu referencia.</p>
           </div>
           <RouterLink class="button" :to="{ name: 'seguimiento' }">
-            Buscar Referencia <span aria-hidden="true">→</span>
+            Buscar referencia
           </RouterLink>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© 2026 HRL Hector Refacciones Laptop — Todos los derechos reservados</p>
+      <p>© 2026 HRL Hector Refacciones Laptop. Todos los derechos reservados.</p>
     </footer>
   </div>
 </template>

@@ -1,4 +1,4 @@
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1338'
+const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337'
 
 async function request(path) {
   const response = await fetch(`${STRAPI_URL}/api${path}`)
@@ -31,6 +31,7 @@ export async function fetchWorks() {
     device: work.device,
     technician: work.technician,
     summary: work.summary,
+    details: work.details,
     photos: (work.photos || []).slice(0, 4).map((photo) => toAbsoluteUrl(photo.url))
   }))
 }
