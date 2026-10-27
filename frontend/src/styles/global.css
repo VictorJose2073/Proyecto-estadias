@@ -58,3 +58,11 @@ body {
 a {
   color: inherit;
 }
+
+/* Los navegadores no heredan la fuente en los controles de formulario */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}

@@ -32,6 +32,6 @@ export async function fetchWorks() {
     technician: work.technician,
     summary: work.summary,
     details: work.details,
-    photos: (work.photos || []).slice(0, 4).map((photo) => toAbsoluteUrl(photo.url))
+    photos: (work.photos || []).map((photo) => toAbsoluteUrl(photo.url))
   }))
 }

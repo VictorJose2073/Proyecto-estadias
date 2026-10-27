@@ -21,7 +21,9 @@
             </button>
           </li>
         </ul>
-        <p class="blog-count">{{ filteredPosts.length }} trabajos</p>
+        <p class="blog-count">
+          {{ filteredPosts.length }} {{ filteredPosts.length === 1 ? 'trabajo' : 'trabajos' }}
+        </p>
       </aside>
 
       <section class="blog-list">
@@ -52,11 +54,39 @@
             </details>
           </div>
           <div v-if="post.photos.length" class="blog-photos">
-            <img v-for="photo in post.photos" :key="photo" :src="photo" :alt="post.title" class="blog-photo" loading="lazy" />
+            <button
+              v-for="(photo, index) in post.photos.slice(0, MAX_VISIBLE_PHOTOS)"
+              :key="photo"
+              type="button"
+              class="blog-photo-link"
+              :aria-label="isMoreTile(post, index)
+                ? `Ver las ${post.photos.length} fotos de ${post.title}`
+                : `Ampliar foto ${index + 1} de ${post.title}`"
+              @click="openLightbox(post, index)"
+            >
+              <img
+                :src="photo"
+                alt=""
+                class="blog-photo"
+                :class="{ 'blog-photo-blurred': isMoreTile(post, index) }"
+                loading="lazy"
+              />
+              <span v-if="isMoreTile(post, index)" class="blog-photo-more" aria-hidden="true">
+                +{{ post.photos.length - MAX_VISIBLE_PHOTOS }}
+              </span>
+            </button>
           </div>
         </article>
       </section>
     </div>
+
+    <PhotoLightbox
+      v-if="lightbox"
+      :photos="lightbox.photos"
+      :title="lightbox.title"
+      :start-index="lightbox.index"
+      @close="lightbox = null"
+    />
   </div>
 </template>
 
@@ -64,12 +94,25 @@
 import { computed, onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useWorksStore } from '@/stores/worksStore'
+import PhotoLightbox from '@/components/PhotoLightbox.vue'
 import "@/styles/BlogPortafolioView.css"
 
 const ALL = 'Todos los trabajos'
 const store = useWorksStore()
 const { works, categories: remoteCategories, isLoading, hasError } = storeToRefs(store)
 const selectedCategory = ref(ALL)
+const lightbox = ref(null)
+
+// Las fotos extra no caben en la tarjeta: la última miniatura visible las anuncia y el visor las muestra todas
+const MAX_VISIBLE_PHOTOS = 4
+
+function isMoreTile(post, index) {
+  return index === MAX_VISIBLE_PHOTOS - 1 && post.photos.length > MAX_VISIBLE_PHOTOS
+}
+
+function openLightbox(post, index) {
+  lightbox.value = { photos: post.photos, title: post.title, index }
+}
 
 const categories = computed(() => [ALL, ...remoteCategories.value])
 
