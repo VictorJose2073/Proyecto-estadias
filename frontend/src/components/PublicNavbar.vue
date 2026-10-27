@@ -46,9 +46,9 @@
 <script setup>
 import { ref } from 'vue'
 
-// El logo vive en public/logo.png; mientras no exista se muestra el nombre en texto
+// El logo vive en public/logo.svg; si falta se muestra el nombre en texto
 // La ruta se arma en tiempo de ejecución para que el build no exija el archivo
-const logoUrl = `${import.meta.env.BASE_URL}logo.png`
+const logoUrl = `${import.meta.env.BASE_URL}logo.svg`
 const logoMissing = ref(false)
 
 // index.html ya aplicó el tema inicial; aquí solo se alterna y se recuerda
@@ -94,11 +94,15 @@ function toggleTheme() {
   text-decoration: none;
 }
 
+/* El rojo del logo no contrasta con el azul de la barra: va sobre una placa blanca en ambos temas */
 .brand-logo {
   display: block;
   width: auto;
   height: 44px;
   max-width: 180px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #fff;
   object-fit: contain;
 }
 
