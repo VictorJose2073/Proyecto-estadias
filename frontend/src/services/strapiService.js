@@ -9,9 +9,87 @@ async function request(path) {
   return body.data
 }
 
+// Un tipo único que nadie ha llenado en el panel responde 404: se trata como vacío
+async function requestSingle(path) {
+  try {
+    return await request(path)
+  } catch (error) {
+    if (error.message.endsWith('404')) return null
+    throw error
+  }
+}
+
 // Las imágenes de Strapi vienen con ruta relativa
 function toAbsoluteUrl(url) {
   return url.startsWith('http') ? url : `${STRAPI_URL}${url}`
+}
+
+// Para tarjetas basta la versión mediana que genera Strapi y para fondos la grande;
+// si la foto es más chica que ese formato, Strapi no lo genera y se usa el original
+function imageUrl(image, size = 'medium') {
+  if (!image) return null
+  const format = image.formats && image.formats[size]
+  return toAbsoluteUrl(format ? format.url : image.url)
+}
+
+export async function fetchHomeHero() {
+  const hero = await requestSingle('/home-hero?populate=backgroundImage')
+  if (!hero) return null
+  return {
+    title: hero.title,
+    text: hero.text,
+    backgroundImage: imageUrl(hero.backgroundImage, 'large')
+  }
+}
+
+export async function fetchHomeProcess() {
+  const section = await requestSingle('/home-process')
+  if (!section) return null
+  return {
+    title: section.title,
+    // En el panel, una línea en blanco separa los párrafos
+    paragraphs: (section.body || '').split(/\n\s*\n/).map((text) => text.trim()).filter(Boolean),
+    noteTitle: section.noteTitle,
+    noteText: section.noteText
+  }
+}
+
+export async function fetchServices() {
+  const services = await request('/services?sort=order:asc&populate=image')
+  return services.map((service) => ({
+    id: service.documentId,
+    title: service.title,
+    description: service.description,
+    image: imageUrl(service.image)
+  }))
+}
+
+export async function fetchContactInfo() {
+  const contact = await requestSingle('/contact-info')
+  if (!contact) return null
+  return {
+    address: contact.address,
+    phone: contact.phone,
+    whatsapp: contact.whatsapp,
+    email: contact.email,
+    schedule: contact.schedule
+  }
+}
+
+export async function fetchAboutPage() {
+  const about = await requestSingle('/about-page?populate[image]=true&populate[sections][populate]=image')
+  if (!about) return null
+  return {
+    title: about.title,
+    intro: about.intro,
+    image: imageUrl(about.image, 'large'),
+    sections: (about.sections || []).map((section) => ({
+      id: section.id,
+      title: section.title,
+      body: section.body,
+      image: imageUrl(section.image)
+    }))
+  }
 }
 
 export async function fetchCategories() {

@@ -1,6 +1,16 @@
 'use strict';
 
-const PUBLIC_READ = ['api::work.work', 'api::article.article', 'api::category.category'];
+// Los tipos únicos (contacto, quiénes somos) solo tienen find
+const PUBLIC_READ = {
+  'api::work.work': ['find', 'findOne'],
+  'api::article.article': ['find', 'findOne'],
+  'api::category.category': ['find', 'findOne'],
+  'api::service.service': ['find', 'findOne'],
+  'api::home-hero.home-hero': ['find'],
+  'api::home-process.home-process': ['find'],
+  'api::contact-info.contact-info': ['find'],
+  'api::about-page.about-page': ['find'],
+};
 
 // El sitio no tiene cuentas de usuario; Strapi deja el registro público abierto por defecto
 const PUBLIC_DENIED = ['plugin::users-permissions.auth.register'];
@@ -15,8 +25,8 @@ module.exports = {
       .findOne({ where: { type: 'public' } });
     if (!role) return;
 
-    for (const uid of PUBLIC_READ) {
-      for (const action of ['find', 'findOne']) {
+    for (const [uid, actions] of Object.entries(PUBLIC_READ)) {
+      for (const action of actions) {
         const name = `${uid}.${action}`;
         const exists = await strapi.db
           .query('plugin::users-permissions.permission')

@@ -23,6 +23,17 @@
   color: var(--color-on-featured-muted);
   font-size: 1rem;
   line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* La capa azul encima de la foto mantiene legible el texto blanco con cualquier imagen */
+.about-hero-with-image {
+  padding-top: 88px;
+  padding-bottom: 88px;
+  background:
+    linear-gradient(rgb(23 56 74 / 80%), rgb(23 56 74 / 80%)),
+    var(--hero-image) center / cover no-repeat,
+    var(--color-featured);
 }
 
 .about-content {
@@ -33,13 +44,29 @@
   margin: 36px auto 0;
 }
 
+/* Con un número impar de bloques, el último ocupa todo el ancho para no dejar un hueco */
+.about-content article:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .about-content article,
-.about-reminder {
+.about-state {
   margin: 0;
   padding: 22px;
+  overflow: hidden;
   border: 1px solid var(--color-border);
   border-radius: 8px;
   background: var(--color-surface);
+}
+
+.about-section-image {
+  display: block;
+  width: calc(100% + 44px);
+  max-width: none;
+  margin: -22px -22px 18px;
+  aspect-ratio: 16 / 9;
+  background: var(--color-info-bg);
+  object-fit: cover;
 }
 
 .about-content h2 {
@@ -47,20 +74,23 @@
   font-size: 1.2rem;
 }
 
-.about-content article p,
-.about-reminder {
+.about-content article p {
+  margin: 0;
   color: var(--color-muted);
   font-size: 0.98rem;
   line-height: 1.65;
+  white-space: pre-line;
 }
 
-.about-content article p {
-  margin: 0;
+.about-state {
+  width: min(900px, calc(100% - 32px));
+  margin: 36px auto 0;
+  color: var(--color-muted);
+  text-align: center;
 }
 
-.about-reminder {
-  grid-column: 1 / -1;
-  border-left: 4px solid var(--color-accent);
+.about-state-error {
+  color: var(--color-error);
 }
 
 @media (max-width: 620px) {
@@ -68,7 +98,8 @@
     grid-template-columns: 1fr;
   }
 
-  .about-reminder {
-    grid-column: auto;
+  .about-hero-with-image {
+    padding-top: 56px;
+    padding-bottom: 56px;
   }
 }

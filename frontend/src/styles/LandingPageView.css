@@ -36,6 +36,14 @@
   background: var(--color-featured);
 }
 
+/* La capa azul encima de la foto mantiene legible el texto blanco con cualquier imagen */
+.hero-with-image {
+  background:
+    linear-gradient(90deg, rgb(23 56 74 / 92%) 0%, rgb(23 56 74 / 75%) 55%, rgb(23 56 74 / 45%) 100%),
+    var(--hero-image) center / cover no-repeat,
+    var(--color-featured);
+}
+
 .hero-content {
   max-width: 1200px;
   padding-top: 40px;
@@ -88,6 +96,11 @@
   color: var(--color-muted);
   font-size: 1rem;
   line-height: 1.7;
+}
+
+/* Sin recuadro lateral, el texto ocupa todo el ancho */
+.about-section-single {
+  grid-template-columns: 1fr;
 }
 
 .about-note {
@@ -158,6 +171,47 @@
   border-radius: 4px;
   background: var(--color-info-bg);
   color: var(--color-info-text);
+}
+
+/* La imagen llega hasta los bordes de la tarjeta, sobre la franja de color */
+.service-card {
+  overflow: hidden;
+}
+
+.service-image {
+  display: block;
+  width: calc(100% + 44px);
+  max-width: none;
+  margin: -22px -22px 0;
+  aspect-ratio: 16 / 9;
+  background: var(--color-info-bg);
+  object-fit: cover;
+}
+
+.content-state {
+  max-width: 850px;
+  margin: 32px auto 0;
+  padding: 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.content-state-error {
+  color: var(--color-error);
+}
+
+.contact-card a {
+  color: var(--color-link);
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact-card span {
+  white-space: pre-line;
 }
 
 .service-card h3 {

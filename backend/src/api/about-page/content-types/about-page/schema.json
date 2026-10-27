@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_pages",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "Quiénes somos"
+  },
+  "options": { "draftAndPublish": false },
+  "attributes": {
+    "title": { "type": "string", "required": true, "default": "Quiénes somos" },
+    "intro": { "type": "text" },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "sections": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about.section"
+    }
+  }
+}

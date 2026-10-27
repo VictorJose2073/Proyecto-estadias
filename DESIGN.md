@@ -3,8 +3,9 @@
 ## Objetivo
 
 Presentar un taller de reparación de laptops con una interfaz clara, práctica y
-confiable. La información comercial debe ser verificable; los datos pendientes
-se identifican como `[DATO REAL: ...]` y no se convierten en enlaces funcionales.
+confiable. La información comercial debe ser verificable. Los servicios, el
+contacto y Quiénes somos se editan en Strapi; un dato vacío en el panel no se
+muestra en el sitio, en lugar de llenarse con un texto de relleno.
 
 ## Sistema visual
 

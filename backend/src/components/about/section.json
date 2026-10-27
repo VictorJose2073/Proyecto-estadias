@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_about_sections",
+  "info": {
+    "displayName": "Bloque de texto",
+    "icon": "file"
+  },
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "body": { "type": "text", "required": true },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
