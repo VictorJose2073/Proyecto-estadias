@@ -79,7 +79,6 @@
 
             <section class="job-card">
               <h2>Resumen de pago</h2>
-              <p class="job-demo-note">Importes ilustrativos. Moneda por confirmar.</p>
               <dl class="job-payment">
                 <div><dt>Total del trabajo</dt><dd>{{ amount(job.total) }}</dd></div>
                 <div><dt>Monto pagado</dt><dd class="job-paid">{{ amount(job.paid) }}</dd></div>
@@ -148,7 +147,9 @@ const summary = computed(() =>
     : []
 )
 
+const mxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' })
+
 function amount(value) {
-  return value.toFixed(2)
+  return `${mxn.format(value)} MXN`
 }
 </script>

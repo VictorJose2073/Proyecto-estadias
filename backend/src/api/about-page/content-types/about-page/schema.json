@@ -15,6 +15,10 @@
       "multiple": false,
       "allowedTypes": ["images"]
     },
+    "imageFocus": {
+      "type": "customField",
+      "customField": "global::focal-point"
+    },
     "sections": {
       "type": "component",
       "repeatable": true,

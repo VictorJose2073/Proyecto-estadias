@@ -30,9 +30,11 @@
   padding-top: 88px;
   padding-bottom: 88px;
   background:
-    linear-gradient(rgb(23 56 74 / 80%), rgb(23 56 74 / 80%)),
-    var(--hero-image) center / cover no-repeat,
+    linear-gradient(rgb(23 56 74 / 65%), rgb(23 56 74 / 65%)),
+    var(--hero-image) var(--hero-position, center) / cover no-repeat,
     var(--color-featured);
+  /* Con la capa más clara, la sombra sostiene el texto blanco sobre zonas claras de la foto */
+  text-shadow: 0 1px 3px rgb(0 0 0 / 45%);
 }
 
 .about-content {

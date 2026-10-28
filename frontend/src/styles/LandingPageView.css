@@ -39,9 +39,15 @@
 /* La capa azul encima de la foto mantiene legible el texto blanco con cualquier imagen */
 .hero-with-image {
   background:
-    linear-gradient(90deg, rgb(23 56 74 / 92%) 0%, rgb(23 56 74 / 75%) 55%, rgb(23 56 74 / 45%) 100%),
+    linear-gradient(90deg, rgb(23 56 74 / 77%) 0%, rgb(23 56 74 / 60%) 55%, rgb(23 56 74 / 30%) 100%),
     var(--hero-image) center / cover no-repeat,
     var(--color-featured);
+  /* Con la capa más clara, la sombra sostiene el texto blanco sobre zonas claras de la foto */
+  text-shadow: 0 1px 3px rgb(0 0 0 / 45%);
+}
+
+.hero-with-image .hero-actions {
+  text-shadow: none;
 }
 
 .hero-content {

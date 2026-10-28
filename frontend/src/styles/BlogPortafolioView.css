@@ -273,4 +273,14 @@
   .blog-photos {
     order: 0;
   }
+
+  /* Con dos fotos (antes y después) solo hay una fila: caben más grandes y centradas en la altura de la tarjeta */
+  .blog-card-pair {
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 42%, 620px);
+  }
+
+  .blog-card-pair .blog-photos {
+    align-self: center;
+    gap: 12px;
+  }
 }

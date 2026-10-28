@@ -15,7 +15,10 @@ const PUBLIC_READ = {
 const PUBLIC_DENIED = ['plugin::users-permissions.auth.register'];
 
 module.exports = {
-  register() {},
+  // El campo de encuadre guarda { x, y }; su editor visual vive en src/admin
+  register({ strapi }) {
+    strapi.customFields.register({ name: 'focal-point', type: 'json' });
+  },
 
   // El público solo puede leer (find/findOne); escribir requiere sesión de administrador
   async bootstrap({ strapi }) {

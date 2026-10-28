@@ -35,7 +35,13 @@
           No hay trabajos en esta categoría.
         </p>
 
-        <article v-for="post in filteredPosts" v-else :key="post.id" class="blog-card">
+        <article
+          v-for="post in filteredPosts"
+          v-else
+          :key="post.id"
+          class="blog-card"
+          :class="{ 'blog-card-pair': post.photos.length === 2 }"
+        >
           <div class="blog-card-body">
             <div class="blog-card-meta">
               <span class="blog-tag">{{ post.category }}</span>

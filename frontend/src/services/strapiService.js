@@ -85,6 +85,8 @@ export async function fetchAboutPage() {
     title: about.title,
     intro: about.intro,
     image: imageUrl(about.image, 'large'),
+    // Punto elegido en el panel como { x, y } en porcentaje; sin él la foto se centra
+    imagePosition: about.imageFocus ? `${about.imageFocus.x}% ${about.imageFocus.y}%` : null,
     sections: (about.sections || []).map((section) => ({
       id: section.id,
       title: section.title,

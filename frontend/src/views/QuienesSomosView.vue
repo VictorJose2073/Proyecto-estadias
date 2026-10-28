@@ -4,7 +4,7 @@
     <header
       class="about-hero"
       :class="{ 'about-hero-with-image': about?.image }"
-      :style="about?.image ? { '--hero-image': `url('${about.image}')` } : null"
+      :style="about?.image ? { '--hero-image': `url('${about.image}')`, '--hero-position': about.imagePosition } : null"
     >
       <h1>{{ about?.title || 'Quiénes somos' }}</h1>
       <p v-if="about?.intro">{{ about.intro }}</p>
