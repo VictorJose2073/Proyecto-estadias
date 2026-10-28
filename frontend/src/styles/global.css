@@ -59,6 +59,23 @@ a {
   color: inherit;
 }
 
+/* La página crece para que el pie quede siempre al fondo, aunque haya poco contenido */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.app-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.app-main > * {
+  flex: 1 0 auto;
+}
+
 /* Los navegadores no heredan la fuente en los controles de formulario */
 button,
 input,

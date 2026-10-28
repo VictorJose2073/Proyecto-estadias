@@ -1,10 +1,14 @@
 <template>
-  <div id="app">
+  <div id="app" class="app-shell">
     <PublicNavbar />
-    <RouterView />
+    <div class="app-main">
+      <RouterView />
+    </div>
+    <SiteFooter />
   </div>
 </template>
 
 <script setup>
 import PublicNavbar from './components/PublicNavbar.vue'
+import SiteFooter from './components/SiteFooter.vue'
 </script>

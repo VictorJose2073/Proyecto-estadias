@@ -96,10 +96,6 @@
         </div>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>© 2026 HRL Hector Refacciones Laptop. Todos los derechos reservados.</p>
-    </footer>
   </div>
 </template>
 

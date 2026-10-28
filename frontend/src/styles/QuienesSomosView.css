@@ -1,5 +1,4 @@
 .about-page {
-  min-height: calc(100vh - 70px);
   padding-bottom: 56px;
   background: var(--color-page);
   color: var(--color-text);

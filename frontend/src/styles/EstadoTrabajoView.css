@@ -1,5 +1,4 @@
 .job-page {
-  min-height: calc(100vh - 70px);
   padding: 28px 0 52px;
   background: var(--color-page);
   color: var(--color-text);

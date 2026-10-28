@@ -286,21 +286,6 @@
   font-size: 0.95rem;
 }
 
-.site-footer {
-  display: grid;
-  min-height: 64px;
-  place-items: center;
-  padding: 14px 20px;
-  border-top: 1px solid var(--color-border);
-  color: var(--color-muted);
-  text-align: center;
-}
-
-.site-footer p {
-  margin: 0;
-  font-size: 0.85rem;
-}
-
 @media (max-width: 760px) {
   .about-section {
     grid-template-columns: 1fr;

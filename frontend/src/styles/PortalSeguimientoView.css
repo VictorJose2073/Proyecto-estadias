@@ -1,5 +1,4 @@
 .tracking-page {
-  min-height: calc(100vh - 70px);
   padding: 48px 16px 64px;
   background: var(--color-page);
   color: var(--color-text);
