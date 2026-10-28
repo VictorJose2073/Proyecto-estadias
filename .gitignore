@@ -24,3 +24,6 @@ Thumbs.db
 
 # Reportes locales de auditoría antislop
 /anti-slop/
+
+# Capturas de pantalla de revisión, solo locales
+/capturas/
