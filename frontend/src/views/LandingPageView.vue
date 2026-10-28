@@ -82,6 +82,22 @@
             <span v-else>{{ item.value }}</span>
           </div>
         </div>
+        <div v-if="!isHomeLoading && !hasHomeError && contact?.mapLocation" class="contact-map">
+          <iframe
+            :src="`https://maps.google.com/maps?q=${encodeURIComponent(contact.mapLocation)}&output=embed`"
+            title="Mapa de ubicación del taller"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <a
+            class="contact-map-link"
+            :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.mapLocation)}`"
+            target="_blank"
+            rel="noopener"
+          >
+            Cómo llegar
+          </a>
+        </div>
       </section>
 
       <section id="seguimiento" class="tracking-cta">

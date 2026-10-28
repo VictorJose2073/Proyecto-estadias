@@ -72,7 +72,9 @@ export async function fetchContactInfo() {
     phone: contact.phone,
     whatsapp: contact.whatsapp,
     email: contact.email,
-    schedule: contact.schedule
+    schedule: contact.schedule,
+    // El mapa usa la ubicación precisa si se capturó; si no, la dirección
+    mapLocation: contact.mapLocation || contact.address
   }
 }
 

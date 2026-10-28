@@ -12,6 +12,7 @@
     "phone": { "type": "string" },
     "whatsapp": { "type": "string" },
     "email": { "type": "email" },
-    "schedule": { "type": "text" }
+    "schedule": { "type": "text" },
+    "mapLocation": { "type": "string" }
   }
 }
