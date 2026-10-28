@@ -105,7 +105,7 @@ import '@/styles/EstadoTrabajoView.css'
 
 const route = useRoute()
 const reference = computed(() => String(route.params.reference || ''))
-// Datos de demostración; deben reemplazarse por registros reales de Strapi.
+// Datos de demostración; deben reemplazarse por registros reales de Firebase (Cloud Firestore).
 const mockJobs = {
   'DEMO-001': {
     reference: 'DEMO-001',
