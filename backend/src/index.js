@@ -3,7 +3,6 @@
 // Los tipos únicos (contacto, quiénes somos) solo tienen find
 const PUBLIC_READ = {
   'api::work.work': ['find', 'findOne'],
-  'api::article.article': ['find', 'findOne'],
   'api::category.category': ['find', 'findOne'],
   'api::service.service': ['find', 'findOne'],
   'api::home-hero.home-hero': ['find'],
