@@ -252,6 +252,11 @@
   line-height: 1.5;
 }
 
+.job-help a {
+  color: var(--color-link);
+  font-weight: 600;
+}
+
 .job-state {
   margin-top: 24px;
   padding: 24px;

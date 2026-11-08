@@ -88,7 +88,10 @@
 
             <section class="job-help">
               <h2>¿Tienes preguntas?</h2>
-              <p>Canal de contacto: [DATO REAL: teléfono o correo oficial]</p>
+              <p>
+                Consulta nuestros datos en la sección de
+                <RouterLink :to="{ name: 'inicio', hash: '#contacto' }">contacto</RouterLink>.
+              </p>
             </section>
           </aside>
         </div>
@@ -103,7 +106,7 @@ import { useRoute } from 'vue-router'
 import '@/styles/EstadoTrabajoView.css'
 
 const route = useRoute()
-const reference = computed(() => String(route.params.reference || ''))
+const reference = computed(() => String(route.params.reference || '').toUpperCase())
 // Datos de demostración; deben reemplazarse por registros reales de Firebase (Cloud Firestore).
 const mockJobs = {
   'DEMO-001': {

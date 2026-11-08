@@ -128,9 +128,15 @@ const filteredPosts = computed(() =>
     : works.value.filter((post) => post.category === selectedCategory.value)
 )
 
+// El campo de texto enriquecido de Strapi guarda Markdown: se quitan las marcas para mostrar solo el texto
 function plainText(value) {
   const document = new DOMParser().parseFromString(value, 'text/html')
-  return document.body.textContent || ''
+  return (document.body.textContent || '')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/^\s{0,3}(#{1,6}|>|[-*+])\s+/gm, '')
+    .replace(/(\*\*|__|\*|_|~~|`)(.+?)\1/g, '$2')
+    .trim()
 }
 
 function formatDate(value) {

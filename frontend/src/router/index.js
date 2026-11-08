@@ -35,5 +35,11 @@ const routes = [
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
+  routes,
+  // Al cambiar de página se empieza arriba; con #ancla se baja a esa sección; con Atrás se recupera la posición
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition
+    if (to.hash) return { el: to.hash, top: 90 }
+    return { top: 0 }
+  }
 })

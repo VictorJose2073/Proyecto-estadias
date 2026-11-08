@@ -134,6 +134,10 @@ onBeforeUnmount(() => {
   border: 0;
   background: rgb(6 13 19 / 94%);
   color: #fff;
+}
+
+/* Solo abierto: display flex anula el display none que el navegador da al diálogo cerrado */
+.lightbox[open] {
   display: flex;
   flex-direction: column;
   gap: 12px;

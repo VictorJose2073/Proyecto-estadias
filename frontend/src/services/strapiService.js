@@ -1,4 +1,4 @@
-const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337'
+const STRAPI_URL = import.meta.env.VITE_STRAPI_URL || 'http://localhost:1338'
 
 async function request(path) {
   const response = await fetch(`${STRAPI_URL}/api${path}`)
@@ -97,13 +97,13 @@ export async function fetchAboutPage() {
 }
 
 export async function fetchCategories() {
-  const categories = await request('/categories?sort=name:asc')
+  const categories = await request('/categories?sort=name:asc&pagination[pageSize]=100')
   return categories.map((category) => category.name)
 }
 
 export async function fetchWorks() {
   const works = await request(
-    '/works?filters[consentimientoCliente][$eq]=true&populate[0]=category&populate[1]=photos&sort=workDate:desc'
+    '/works?filters[consentimientoCliente][$eq]=true&populate[0]=category&populate[1]=photos&sort=workDate:desc&pagination[pageSize]=100'
   )
   return works.map((work) => ({
     id: work.documentId,
