@@ -27,7 +27,7 @@ let env
 
 before(async () => {
   // Las pruebas usan un UID ficticio en lugar del marcador de producción
-  const rules = readFileSync('../../firestore.rules', 'utf8').replace('REEMPLAZAR_UID_HRL_CORE', UID_PRUEBA)
+  const rules = readFileSync('../../firestore.rules', 'utf8').replace(/request.auth.uid == '[^']+'/, `request.auth.uid == '${UID_PRUEBA}'`)
   env = await initializeTestEnvironment({ projectId: 'demo-hrl', firestore: { rules } })
 })
 after(() => env.cleanup())

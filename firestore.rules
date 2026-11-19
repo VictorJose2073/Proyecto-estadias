@@ -5,9 +5,9 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // UID de la cuenta de Firebase Authentication del emisor (HRL CORE).
-    // Mientras diga REEMPLAZAR, nadie puede escribir.
+    // Usuario del taller creado en Authentication (no es secreto).
     function esEmisor() {
-      return request.auth != null && request.auth.uid == 'REEMPLAZAR_UID_HRL_CORE';
+      return request.auth != null && request.auth.uid == 'Ziwbd42Rt9cLZbGsM91LAKAvotO2';
     }
 
     function texto(v, max) {
