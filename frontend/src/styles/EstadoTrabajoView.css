@@ -280,3 +280,19 @@
     grid-template-columns: 1fr 340px;
   }
 }
+
+.job-stages {
+  margin-top: 18px;
+}
+
+.job-check-pending {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.job-history .job-detail {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}

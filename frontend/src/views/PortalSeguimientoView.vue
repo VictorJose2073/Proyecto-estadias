@@ -8,7 +8,7 @@
     <section class="tracking-card">
       <h2>Consultar estado del trabajo</h2>
       <p class="tracking-help">
-        Encontrarás el número de referencia en la constancia de recepción de tu equipo.
+        Encontrarás el número de referencia y un código QR en el comprobante de recepción de tu equipo.
       </p>
 
       <form class="tracking-form" @submit.prevent="searchReference">
@@ -20,8 +20,10 @@
             v-model="reference"
             name="reference"
             type="text"
-            placeholder="Ej: DEMO-001"
+            placeholder="Ej: K7QM-2XPA-9RTD"
             autocomplete="off"
+            autocapitalize="characters"
+            spellcheck="false"
           />
         </div>
         <p v-if="errorMessage" class="tracking-error" role="alert">{{ errorMessage }}</p>
@@ -36,6 +38,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { normalizarCodigo } from '@/utils/codigo'
 import '@/styles/PortalSeguimientoView.css'
 
 const router = useRouter()
@@ -45,13 +48,13 @@ const errorMessage = ref('')
 // La consulta real ocurre en la vista de estado, no aquí
 function searchReference() {
   errorMessage.value = ''
-  const value = reference.value.trim()
+  const value = normalizarCodigo(reference.value)
 
   if (!value) {
     errorMessage.value = 'Escribe tu número de referencia.'
     return
   }
 
-  router.push({ name: 'estado-trabajo', params: { reference: value.toUpperCase() } })
+  router.push({ name: 'estado-trabajo', params: { reference: value } })
 }
 </script>
