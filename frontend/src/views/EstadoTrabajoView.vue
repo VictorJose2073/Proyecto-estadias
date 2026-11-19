@@ -3,20 +3,25 @@
     <div class="job-width">
       <RouterLink class="job-back" :to="{ name: 'seguimiento' }">← Nueva búsqueda</RouterLink>
 
-      <p v-if="!job" class="job-state">
-        No encontramos resultados para la referencia {{ reference }}.
+      <p v-if="loading" class="job-state">Consultando la referencia {{ reference }}…</p>
+      <p v-else-if="error" class="job-state job-state-error" role="alert">
+        No pudimos consultar tu orden en este momento. Intenta de nuevo en unos minutos.
+      </p>
+      <p v-else-if="!job" class="job-state">
+        No encontramos resultados para la referencia {{ reference }}. Revisa que esté escrita
+        igual que en tu comprobante.
       </p>
 
-      <template v-if="job">
-        <p class="job-demo-note">
-          Demostración: estos datos son de ejemplo y no corresponden a una orden real ni se actualizan en tiempo real.
+      <template v-else>
+        <p v-if="modoDemo" class="job-demo-note">
+          Demostración: estos datos son de ejemplo y no corresponden a una orden real.
         </p>
         <header class="job-header">
           <div>
-            <h1>{{ job.device }}</h1>
-            <p class="job-reference">Referencia: <code>{{ job.reference }}</code></p>
+            <h1>{{ job.equipo }}</h1>
+            <p class="job-reference">Referencia: <code>{{ job.referencia }}</code></p>
           </div>
-          <span class="job-badge">● {{ job.status }}</span>
+          <span class="job-badge">● {{ status.texto }}</span>
         </header>
 
         <dl class="job-summary">
@@ -28,62 +33,53 @@
 
         <div class="job-grid">
           <div class="job-column">
-            <section class="job-card">
+            <section v-if="status.paso" class="job-card">
               <div class="job-progress-head">
                 <h2>Progreso general</h2>
-                <strong>{{ job.progress }}%</strong>
+                <strong>{{ progress }}%</strong>
               </div>
-              <div class="job-bar"><span :style="{ width: job.progress + '%' }"></span></div>
+              <div class="job-bar"><span :style="{ width: progress + '%' }"></span></div>
               <div class="job-progress-foot">
-                <small>{{ job.stepsDone }} de {{ job.stepsTotal }} pasos completados</small>
-                <small v-if="job.progress === 100" class="job-ready">✓ Lista para retirar</small>
+                <small>Paso {{ status.paso }} de {{ PASOS_TOTALES }}</small>
+                <small v-if="job.estatus === 'listo_para_entrega'" class="job-ready">✓ Listo para retirar</small>
               </div>
             </section>
 
             <section class="job-card">
               <h2>Historial de actividad</h2>
-              <p v-if="job.history.length === 0" class="job-state">Aún no hay actividad.</p>
+              <p v-if="job.historial.length === 0" class="job-state">Aún no hay actividad.</p>
               <ol v-else class="job-history">
-                <li v-for="entry in job.history" :key="entry.date + entry.text">
+                <li v-for="(entry, i) in job.historial" :key="i">
                   <span class="job-check" aria-hidden="true">✓</span>
                   <div>
-                    <small>{{ entry.date }}</small>
-                    <p>{{ entry.text }}</p>
+                    <small>{{ formatDate(entry.fecha) }} · {{ estatusInfo(entry.estatus).texto }}</small>
+                    <p v-if="entry.nota">{{ entry.nota }}</p>
                   </div>
                 </li>
               </ol>
             </section>
 
-            <section class="job-card">
+            <section v-if="job.notasCliente" class="job-card">
               <h2>Notas del técnico</h2>
-              <p class="job-notes">{{ job.notes }}</p>
+              <p class="job-notes">{{ job.notasCliente }}</p>
             </section>
           </div>
 
           <aside class="job-column">
-            <section class="job-card">
+            <section v-if="job.garantias.length" class="job-card">
               <h2>Garantías</h2>
               <ul class="job-warranties">
-                <li v-for="warranty in job.warranties" :key="warranty.name">
+                <li v-for="warranty in job.garantias" :key="warranty.concepto">
                   <div>
-                    <strong>{{ warranty.name }}</strong>
+                    <strong>{{ warranty.concepto }}</strong>
                     <small>Garantía</small>
                   </div>
                   <div class="job-expires">
                     <small>Vence</small>
-                    <span>{{ warranty.expires }}</span>
+                    <span>{{ formatDay(warranty.vence) }}</span>
                   </div>
                 </li>
               </ul>
-            </section>
-
-            <section class="job-card">
-              <h2>Resumen de pago</h2>
-              <dl class="job-payment">
-                <div><dt>Total del trabajo</dt><dd>{{ amount(job.total) }}</dd></div>
-                <div><dt>Monto pagado</dt><dd class="job-paid">{{ amount(job.paid) }}</dd></div>
-                <div><dt>Balance pendiente</dt><dd>{{ amount(job.total - job.paid) }}</dd></div>
-              </dl>
             </section>
 
             <section class="job-help">
@@ -101,58 +97,54 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { obtenerSeguimiento, estatusInfo, modoDemo, PASOS_TOTALES } from '@/services/seguimientoService'
 import '@/styles/EstadoTrabajoView.css'
 
 const route = useRoute()
-const reference = computed(() => String(route.params.reference || '').toUpperCase())
-// Datos de demostración; deben reemplazarse por registros reales de Firebase (Cloud Firestore).
-const mockJobs = {
-  'DEMO-001': {
-    reference: 'DEMO-001',
-    device: 'Laptop de demostración',
-    status: 'Completado',
-    client: 'Cliente de demostración',
-    technician: 'Técnico de demostración',
-    entryDate: '12/09/2026, 11:20 AM',
-    total: 85,
-    paid: 85,
-    progress: 100,
-    stepsDone: 7,
-    stepsTotal: 7,
-    history: [
-      { date: '12/09/2026, 11:20 AM', text: 'Orden de demostración recibida' },
-      { date: '12/09/2026, 11:40 AM', text: 'Diagnóstico de demostración completado' },
-      { date: '12/09/2026, 01:10 PM', text: 'Revisión de demostración en proceso' },
-      { date: '12/09/2026, 03:12 PM', text: 'Trabajo de demostración completado' }
-    ],
-    warranties: [
-      { name: 'Garantía de demostración', expires: '12/03/2027' }
-    ],
-    notes: 'Este texto es de ejemplo. Sustitúyelo por notas verificadas antes de usar datos reales.'
-  }
-}
+const reference = computed(() => String(route.params.reference || '').trim().toUpperCase())
 
-const job = computed(() => mockJobs[reference.value] || null)
+const job = ref(null)
+const loading = ref(true)
+const error = ref(false)
 
-const summary = computed(() =>
-  job.value
-    ? [
-        { label: 'Cliente', value: job.value.client },
-        { label: 'Técnico asignado', value: job.value.technician },
-        { label: 'Fecha de ingreso', value: job.value.entryDate },
-        {
-          label: 'Costo total',
-          value: `${amount(job.value.total)} (pagado: ${amount(job.value.paid)})`
-        }
-      ]
-    : []
+watch(
+  reference,
+  async (value) => {
+    loading.value = true
+    error.value = false
+    job.value = null
+    try {
+      job.value = await obtenerSeguimiento(value)
+    } catch (e) {
+      console.error('Error al consultar Firestore:', e)
+      error.value = true
+    } finally {
+      loading.value = false
+    }
+  },
+  { immediate: true }
 )
 
-const mxn = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' })
+const status = computed(() => estatusInfo(job.value?.estatus))
+const progress = computed(() => Math.round(((status.value.paso || 0) / PASOS_TOTALES) * 100))
 
-function amount(value) {
-  return `${mxn.format(value)} MXN`
-}
+const summary = computed(() => {
+  if (!job.value) return []
+  const items = [
+    { label: 'Estatus', value: status.value.texto },
+    { label: 'Fecha de ingreso', value: formatDate(job.value.fechaIngreso) }
+  ]
+  if (job.value.fechaEstimadaEntrega) {
+    items.push({ label: 'Entrega estimada', value: formatDay(job.value.fechaEstimadaEntrega) })
+  }
+  items.push({ label: 'Última actualización', value: formatDate(job.value.actualizado) })
+  return items
+})
+
+const dateTime = new Intl.DateTimeFormat('es-MX', { dateStyle: 'medium', timeStyle: 'short' })
+const dateOnly = new Intl.DateTimeFormat('es-MX', { dateStyle: 'medium' })
+const formatDate = (d) => (d ? dateTime.format(d) : '—')
+const formatDay = (d) => (d ? dateOnly.format(d) : '—')
 </script>
