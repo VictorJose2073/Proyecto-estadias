@@ -28,6 +28,8 @@
 
 .blog-layout {
   display: grid;
+  /* minmax(0, …) evita que la fila de categorías ensanche la página en celular */
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
   padding: 28px 0 48px;
 }
